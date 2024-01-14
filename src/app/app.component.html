@@ -1,0 +1,31 @@
+
+<nav mat-tab-nav-bar [tabPanel]="tabPanel" class="nav-header">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h2 class="nav-header-text">Peyton & Kayla's Wedding</h2>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let link of links">
+      <a mat-tab-link
+      class="tab-links"
+        (click)="activeLink = link.link"
+        [routerLink]="link.link"
+        routerLinkActive="active"
+        [active]="activeLink.link === link.link"> {{link.title}} </a>    
+      </button>
+  </mat-menu>
+
+
+  <!-- @for (link of links; track link) {
+    <a mat-tab-link
+    class="tab-links"
+      (click)="activeLink = link.link"
+      [routerLink]="link.link"
+      routerLinkActive="active"
+      [active]="activeLink.link === link.link"> {{link.title}} </a>
+  } -->
+</nav>
+
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

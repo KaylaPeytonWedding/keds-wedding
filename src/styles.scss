@@ -1,0 +1,270 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+//from a theme generator, not how we'd do this normally...
+// Foreground Elements
+
+// Light Theme Text
+$dark-text: #000000;
+$dark-primary-text: rgba($dark-text, 0.87);
+$dark-accent-text: rgba($dark-primary-text, 0.54);
+$dark-disabled-text: rgba($dark-primary-text, 0.38);
+$dark-dividers: rgba($dark-primary-text, 0.12);
+$dark-focused: rgba($dark-primary-text, 0.12);
+
+$mat-light-theme-foreground: (
+  base: black,
+  divider: $dark-dividers,
+  dividers: $dark-dividers,
+  disabled: $dark-disabled-text,
+  disabled-button: rgba($dark-text, 0.26),
+  disabled-text: $dark-disabled-text,
+  elevation: black,
+  secondary-text: $dark-accent-text,
+  hint-text: $dark-disabled-text,
+  accent-text: $dark-accent-text,
+  icon: $dark-accent-text,
+  icons: $dark-accent-text,
+  text: $dark-primary-text,
+  slider-min: $dark-primary-text,
+  slider-off: rgba($dark-text, 0.26),
+  slider-off-active: $dark-disabled-text,
+);
+
+// Dark Theme text
+$light-text: #ffffff;
+$light-primary-text: $light-text;
+$light-accent-text: rgba($light-primary-text, 0.7);
+$light-disabled-text: rgba($light-primary-text, 0.5);
+$light-dividers: rgba($light-primary-text, 0.12);
+$light-focused: rgba($light-primary-text, 0.12);
+
+$mat-dark-theme-foreground: (
+  base: $light-text,
+  divider: $light-dividers,
+  dividers: $light-dividers,
+  disabled: $light-disabled-text,
+  disabled-button: rgba($light-text, 0.3),
+  disabled-text: $light-disabled-text,
+  elevation: black,
+  hint-text: $light-disabled-text,
+  secondary-text: $light-accent-text,
+  accent-text: $light-accent-text,
+  icon: $light-text,
+  icons: $light-text,
+  text: $light-text,
+  slider-min: $light-text,
+  slider-off: rgba($light-text, 0.3),
+  slider-off-active: rgba($light-text, 0.3),
+);
+
+// Background config
+// Light bg
+$light-background: #e3c7c2;
+$light-bg-darker-5: darken($light-background, 5%);
+$light-bg-darker-10: darken($light-background, 10%);
+$light-bg-darker-20: darken($light-background, 20%);
+$light-bg-darker-30: darken($light-background, 30%);
+$light-bg-lighter-5: lighten($light-background, 5%);
+$dark-bg-tooltip: lighten(#2c2c2c, 20%);
+$dark-bg-alpha-4: rgba(#2c2c2c, 0.04);
+$dark-bg-alpha-12: rgba(#2c2c2c, 0.12);
+
+$mat-light-theme-background: (
+  background: $light-background,
+  status-bar: $light-bg-darker-20,
+  app-bar: $light-bg-darker-5,
+  hover: $dark-bg-alpha-4,
+  card: $light-bg-lighter-5,
+  dialog: $light-bg-lighter-5,
+  tooltip: $dark-bg-tooltip,
+  disabled-button: $dark-bg-alpha-12,
+  raised-button: $light-bg-lighter-5,
+  focused-button: $dark-focused,
+  selected-button: $light-bg-darker-20,
+  selected-disabled-button: $light-bg-darker-30,
+  disabled-button-toggle: $light-bg-darker-10,
+  unselected-chip: $light-bg-darker-10,
+  disabled-list-option: $light-bg-darker-10,
+);
+
+// Dark bg
+$dark-background: #2c2c2c;
+$dark-bg-lighter-5: lighten($dark-background, 5%);
+$dark-bg-lighter-10: lighten($dark-background, 10%);
+$dark-bg-lighter-20: lighten($dark-background, 20%);
+$dark-bg-lighter-30: lighten($dark-background, 30%);
+$light-bg-alpha-4: rgba(#e3c7c2, 0.04);
+$light-bg-alpha-12: rgba(#e3c7c2, 0.12);
+
+// Background palette for dark themes.
+$mat-dark-theme-background: (
+  background: $dark-background,
+  status-bar: $dark-bg-lighter-20,
+  app-bar: $dark-bg-lighter-5,
+  hover: $light-bg-alpha-4,
+  card: $dark-bg-lighter-5,
+  dialog: $dark-bg-lighter-5,
+  tooltip: $dark-bg-lighter-20,
+  disabled-button: $light-bg-alpha-12,
+  raised-button: $dark-bg-lighter-5,
+  focused-button: $light-focused,
+  selected-button: $dark-bg-lighter-20,
+  selected-disabled-button: $dark-bg-lighter-30,
+  disabled-button-toggle: $dark-bg-lighter-10,
+  unselected-chip: $dark-bg-lighter-20,
+  disabled-list-option: $dark-bg-lighter-10,
+);
+
+// Compute font config
+
+// Theme Config
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Special Elite", system-ui;
+  background-image: url(./assets/images/white-texture-background.jpeg);
+ // background-color: predominent color of that texture;
+}
+
+body {
+  --primary-color: #a96e66;
+  --primary-lighter-color: #e5d4d1;
+  --primary-darker-color: #8f5149;
+  --text-primary-color: #{$light-primary-text};
+  --text-primary-lighter-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
+}
+.nav-header {
+  height: 3rem!important;
+  background-color: var(--primary-lighter-color);
+  .nav-header-text{
+      flex: 1 1 auto;
+      text-align: center;
+  }
+}
+$mat-primary: (
+  main: #a96e66,
+  lighter: #e5d4d1,
+  darker: #8f5149,
+  200: #a96e66,
+  // For slide toggle,
+  contrast : (main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
+
+
+body {
+  --accent-color: #707e6d;
+  --accent-lighter-color: #d4d8d3;
+  --accent-darker-color: #536150;
+  --text-accent-color: #{$light-primary-text};
+  --text-accent-lighter-color: #{$dark-primary-text};
+  --text-accent-darker-color: #{$light-primary-text};
+}
+
+$mat-accent: (
+  main: #707e6d,
+  lighter: #d4d8d3,
+  darker: #536150,
+  200: #707e6d,
+  // For slide toggle,
+  contrast : (main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
+
+
+body {
+  --warn-color: #70222c;
+  --warn-lighter-color: #d4bdc0;
+  --warn-darker-color: #53141b;
+  --text-warn-color: #{$light-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
+}
+
+$mat-warn: (
+  main: #70222c,
+  lighter: #d4bdc0,
+  darker: #53141b,
+  200: #70222c,
+  // For slide toggle,
+  contrast : (main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
+;
+
+$theme: (
+  primary: $theme-primary,
+  accent: $theme-accent,
+  warn: $theme-warn,
+  is-dark: false,
+  foreground: $mat-light-theme-foreground,
+  background: $mat-light-theme-background,
+);
+
+// Theme Init
+@include mat.all-component-themes($theme);
+
+
+.tab-links.active {
+  background-color: $light-background !important;
+
+  span {
+    color: $dark-text !important;
+  }
+}
+
+.cursive-header {
+  font-family: 'Parisienne', cursive;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.current-image {
+  height: 25rem!important;
+}
+.dots-container {
+  display: none!important;
+}
+h2,
+h3 {
+  font-weight: 300;
+}
+
+h3 {
+  margin: 0px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.section-header {
+  font-size: 2rem;
+}
+
+.section-image {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+a:any-link{
+  color: var(--accent-color);
+}
+a:hover{
+  color: var(--warn-darker-color);
+}
